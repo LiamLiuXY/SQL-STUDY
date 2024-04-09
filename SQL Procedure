@@ -1,13 +1,13 @@
-#introduce a new database
+--introduce a new database
 USE world_peace;
 
-#check for procudure overlap
+--check for procudure overlap
 DROP PROCEDURE IF EXISTS stp_discount20;
 
-#replace deliminator for code chunk operation with $$ instead of ;
+--replace deliminator for code chunk operation with $$ instead of ;
 DELIMITER $$
 
-#Create procedure called stp_discount20 with input item id and output the price after discount
+--Create procedure called stp_discount20 with input item id and output the price after discount
 CREATE PROCEDURE stp_discount20(
 	IN request_item_id CHAR(10),
     OUT discounted_price INT)
@@ -20,7 +20,7 @@ BEGIN
 	-- for merchandise_item_id matching request_item_id
     -- note that your statement will not run yet
 
-#Select the price after 20% discount and filter with the input item id
+--Select the price after 20% discount and filter with the input item id
     SELECT unit_price*0.8 INTO discounted_price
     FROM merchandise_item
     WHERE request_item_id = merchandise_item_id;
@@ -29,7 +29,7 @@ END$$
 
 DELIMITER ;
 
-#Test the procudure, set initial variable, call the procedure and return the result
+--Test the procudure, set initial variable, call the procedure and return the result
 SET @discounted_price = 0;
 CALL get_qoh_stp("ITALYPASTA", @qty);
 SELECT @qty;
