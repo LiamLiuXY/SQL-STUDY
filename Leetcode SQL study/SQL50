@@ -1,0 +1,9 @@
+
+SELECT name
+FROM Customer
+WHERE COALESCE(referee_id, 0) != 2
+
+
+--COALESCE(referee_id, 0) will return referee_id if referee_id is not NULL, and 0 if referee_id is NULL. 
+--The WHERE clause then filters out any rows where this result is not equal to 2.
+
